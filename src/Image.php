@@ -7,6 +7,13 @@ namespace dwmsw\genesislive;
 class Image
 {
 
+    /**
+     * Builds the URL for an image
+     * @param  string  $Key    Media Key
+     * @param  int $Width  width of the returned image
+     * @param  int $Height height of the returned image
+     * @return string          the URL
+     */
     public static function getImageURL($Key, $Width = false, $Height = false)
     {
         // Set up an array to handle the parameters

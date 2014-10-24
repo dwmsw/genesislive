@@ -1,6 +1,6 @@
 <?php
 /**
-* Search class for the genesislive API
+* Single property class for the genesislive API
 */
 namespace dwmsw\genesislive;
 
@@ -18,21 +18,37 @@ class Single extends AbstractSettings
         $this->apiKey = $apiKey;
     }
 
+    /**
+     * Make request to property URL
+     * @return void 
+     */
     public function doSearch()
     {
         $this->request = $this->createRequest('/get/property');
     }
 
+    /**
+     * getter for response
+     * @return object 
+     */
     public function getResponse()
     {
         return $this->response;
     }
 
+    /**
+     * Getter for properties
+     * @return object
+     */
     public function getProperty()
     {
         return $this->response->Result->Property;
     }
 
+    /**
+     * Getter for media
+     * @return object
+     */
     public function getMedia()
     {
         // New generic object
@@ -55,6 +71,10 @@ class Single extends AbstractSettings
         return $return; 
     }
 
+    /**
+     * Getter for narative
+     * @return object
+     */
     public function getNarrative()
     {
         // New generic object

@@ -1,6 +1,6 @@
 <?php
 /**
-* Abstract settings for the 
+* Abstract settings for the genesislive API
 */
 
 namespace dwmsw\genesislive;
@@ -51,12 +51,21 @@ class AbstractSettings
         $this->baseURL = 'http://api.genesislive.net';
     }
 
+    /**
+     * Make a request to the API
+     * @param  string $url The URL to search on
+     * @return object      HTTP object
+     */
     protected function createRequest($url)
     {
         return $this->http->createRequest('GET', $this->baseURL . $url . '?' . $this->getQueryString());
     }
 
-    protected function getQueryString($useKey = true)
+    /**
+     * Internal function to build the query string
+     * @return string          The compiled query string
+     */
+    protected function getQueryString()
     {
         if ($useKey) {
            // Add the API key to the array
@@ -67,11 +76,19 @@ class AbstractSettings
         return http_build_query($this->queryString);
     }
 
+    /**
+     * Setter for query string
+     * @param array $queryString Attributes to set in the query string
+     */
     public function setQueryString(array $queryString)
     {
         $this->queryString = $queryString;
     }
 
+    /**
+     * Fires off the request
+     * @return void 
+     */
     public function sendRequest()
     {
         $this->response = $this->http->send($this->request)->xml();
