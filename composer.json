@@ -2,8 +2,12 @@
     "name": "dwmsw/genesislive",
     "type": "library",
     "description": "Genesis API Wrapper",
-    "keywords":  ["test"],
-    "homepage": "https://github.com/dwmsw/",
+    "keywords":  [
+        "Radical Solutions",
+        "genesislive",
+        "Genesis API"
+    ],
+    "homepage": "https://github.com/dwmsw/genesislive/",
     "license": "GPL-3.0",
     "authors": [
         {
