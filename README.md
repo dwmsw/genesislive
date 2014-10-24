@@ -55,6 +55,16 @@ $api->sendRequest();
 $property = $api->getProperty();
 ```
 
+**Images**
+
+```php
+    // Grab the URL
+    $src = dwmsw\genesislive\Image::getImageURL('MediaKey', 'Width', 'Height');
+
+    // Print the Image
+    printf('<img src="%s" alt="">', $src);
+```
+
 ## Getting Involved
 
 - Open an issue with a feature you'd like
