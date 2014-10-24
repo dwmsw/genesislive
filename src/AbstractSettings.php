@@ -67,10 +67,8 @@ class AbstractSettings
      */
     protected function getQueryString()
     {
-        if ($useKey) {
-           // Add the API key to the array
-           $this->queryString['key'] = $this->apiKey;
-        }
+        // Add the API key to the array
+        $this->queryString['key'] = $this->apiKey;
         
         // Build the query and return it
         return http_build_query($this->queryString);
