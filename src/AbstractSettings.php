@@ -75,5 +75,13 @@ class AbstractSettings
     public function sendRequest()
     {
         $this->response = $this->http->send($this->request)->xml();
+
+        // Grab OK attribute
+        $OK = (string) $this->response->attributes()['OK'];
+
+        // Make sure the request was OK
+        if ($OK != 1) {
+            throw new \Exception("Error Making Request", 1);
+        }
     }
 }

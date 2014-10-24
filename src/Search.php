@@ -23,16 +23,6 @@ class Search extends AbstractSettings
         $this->request = $this->createRequest('/get/properties');
     }
 
-    public function getProperty()
-    {
-        $this->request = $this->createRequest('/get/properties');
-    }
-
-    public function sendRequest()
-    {
-        $this->response = $this->http->send($this->request)->xml();
-    }
-
     public function getResponse()
     {
         return $this->response;
