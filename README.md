@@ -13,7 +13,7 @@ It aims to make interacting with the API as easy as possible.
 
 Usage is pretty easy, create a new instance of the class you require and then pass in the parameters required.
 
-** Search **
+**Search**
 
 ```PHP
 require('vendor/autoload.php');
@@ -36,7 +36,7 @@ $api->sendRequest();
 $properties = $api->getProperties();
 ```
 
-** Single Property **
+**Single Property**
 
 ```PHP
 require('vendor/autoload.php');
