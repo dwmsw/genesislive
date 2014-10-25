@@ -11,7 +11,8 @@ dwmsw/genesislive is a library for interacting with the [Radical Solutions](http
 It aims to make interacting with the API as easy as possible.
 
 ## To Do
-- Add tests!
+- Add more tests!
+- Get an API key to use with tests so we don't have to check for 400 errors form the API
 
 ## Usage
 
