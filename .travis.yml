@@ -12,6 +12,5 @@ addons:
     repo_token: 781c51ddaa271006924740db7f1a02bbdf1c7345fce93d609ba98097822715d0
 
 after_script:
-  after_script:
   - CODECLIMATE_REPO_TOKEN="781c51ddaa271006924740db7f1a02bbdf1c7345fce93d609ba98097822715d0" vendor/bin/test-reporter --stdout > build/logs/codeclimate.json
   - "curl --verbose -X POST -d @build/logs/codeclimate.json -H 'Content-Type: application/json' -H 'User-Agent: Code Climate (PHP Test Reporter v0.1.1)' https://codeclimate.com/test_reports"
