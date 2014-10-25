@@ -1,5 +1,9 @@
 # dwmsw/genesislive
 
+[![Build Status](https://travis-ci.org/dwmsw/genesislive.svg)](https://travis-ci.org/dwmsw/genesislive)
+[![Code Climate](https://codeclimate.com/github/dwmsw/genesislive/badges/gpa.svg)](https://codeclimate.com/github/dwmsw/genesislive)
+[![Test Coverage](https://codeclimate.com/github/dwmsw/genesislive/badges/coverage.svg)](https://codeclimate.com/github/dwmsw/genesislive)
+
 ## Description
 
 dwmsw/genesislive is a library for interacting with the [Radical Solutions](http://www.radsol.co.uk/) Genesis API.
