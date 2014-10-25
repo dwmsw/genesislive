@@ -1,8 +1,15 @@
 language: php
+
 php:
   - 5.5
   - 5.4
-  - 5.3
 
 before_script:
-  - composer install
+  - composer install --dev
+
+addons:
+  code_climate:
+    repo_token: 781c51ddaa271006924740db7f1a02bbdf1c7345fce93d609ba98097822715d0
+
+after_script:
+  - vendor/bin/test-reporter
