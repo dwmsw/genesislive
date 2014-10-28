@@ -30,16 +30,16 @@ class Search extends AbstractSettings
 
     public function getProperties()
     {
-        return $this->response->Result->Properties->Property;
+        return $this->response->Items;
     }
 
     public function getPageCount()
     {
-        return $this->response->Result->Match->PageCount;
+        return $this->response->PageCache->PageCount;
     }
 
     public function getResultCount()
     {
-        return $this->response->Result->Match->MatchCount;
+        return $this->response->PageCache->ItemCount;
     }
 }
