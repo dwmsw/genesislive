@@ -20,7 +20,7 @@ class Search extends AbstractSettings
 
     public function doSearch()
     {
-        $this->request = $this->createRequest('/get/properties');
+        $this->request = $this->createRequest('/Properties/List');
     }
 
     public function getResponse()
