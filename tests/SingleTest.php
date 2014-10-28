@@ -27,7 +27,7 @@ class SingleTest extends PHPUnit_Framework_TestCase
         $search = new Single('xxxx-xxxx-xxxx-xxxx');
 
         try {
-	        $search->doSearch();
+	        $search->doSearch(123);
 	        $search->sendRequest();
 
 	        $output = $search->getResponse();

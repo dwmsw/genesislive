@@ -9,8 +9,8 @@ class ImageTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testBaseImage()
 	{
-		$expected = 'http://api.genesislive.net/get/media?Key=1234';
-		$imageURL = Image::getImageURL('1234');
+		$expected = 'http://api.genesislive.net/j2.0/Media/12345?Key=1234';
+		$imageURL = Image::getImageURL('12345','1234');
 
 		$this->assertEquals($expected, $imageURL);
 	}
@@ -20,7 +20,7 @@ class ImageTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testWidthImage()
 	{
-		$imageURL = Image::getImageURL('1234', 200);
+		$imageURL = Image::getImageURL('12345', '1234', 200);
 
 		$this->assertContains('width=200', $imageURL, 'String didn\'t contain a width' , true);
 	}
@@ -30,7 +30,7 @@ class ImageTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testHeightImage()
 	{
-		$imageURL = Image::getImageURL('1234', false, 200);
+		$imageURL = Image::getImageURL('12345', '1234', false, 200);
 
 		$this->assertContains('height=200', $imageURL, 'String didn\'t contain a Height' , true);
 	}
@@ -40,11 +40,12 @@ class ImageTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testCompleteImage()
 	{
-		$imageURL = Image::getImageURL('1234', 200, 200);
+		$imageURL = Image::getImageURL('12345', '1234', 200, 200);
 
 		$this->assertContains('width=200', $imageURL, 'String didn\'t contain a width' , true);
 		$this->assertContains('height=200', $imageURL, 'String didn\'t contain a height' , true);
 		$this->assertContains('key=1234', $imageURL, 'String didn\'t contain a key' , true);
+		$this->assertContains('12345', $imageURL, 'String didn\'t contain a MediaID' , true);
 	}
 
 }
