@@ -9,12 +9,13 @@ class Image
 
     /**
      * Builds the URL for an image
+     * @param  string  $MediaID    Media ID
      * @param  string  $Key    Media Key
      * @param  int $Width  width of the returned image
      * @param  int $Height height of the returned image
      * @return string          the URL
      */
-    public static function getImageURL($Key, $Width = false, $Height = false)
+    public static function getImageURL($MediaID, $Key, $Width = false, $Height = false)
     {
         // Set up an array to handle the parameters
         $params = array();
@@ -24,6 +25,11 @@ class Image
             throw new \Exception("Missing media key", 1);
         } else {
             $params['Key'] = (string) $Key;
+        }
+
+        // Check for media ID
+        if (!$MediaID) {
+            throw new \Exception("Missing media ID", 1);
         }
 
         // Set width
@@ -36,6 +42,6 @@ class Image
             $params['Height'] = (int) $Height;
         }
 
-        return "http://api.genesislive.net/get/media?" . http_build_query($params);
+        return "http://api.genesislive.net/j2.0/Media/{$MediaID}?" . http_build_query($params);
     }
 }
