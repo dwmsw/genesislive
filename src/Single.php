@@ -22,9 +22,13 @@ class Single extends AbstractSettings
      * Make request to property URL
      * @return void 
      */
-    public function doSearch()
+    public function doSearch($PropertyID)
     {
-        $this->request = $this->createRequest('/get/property');
+        if (!$PropertyID) {
+            throw new \Exception("Missing Property ID", 1);
+        }
+
+        $this->request = $this->createRequest("/Properties/{$PropertyID}");
     }
 
     /**
@@ -37,15 +41,6 @@ class Single extends AbstractSettings
     }
 
     /**
-     * Getter for properties
-     * @return object
-     */
-    public function getProperty()
-    {
-        return $this->response->Result->Property;
-    }
-
-    /**
      * Getter for media
      * @return object
      */
@@ -54,16 +49,16 @@ class Single extends AbstractSettings
         // New generic object
         $return = new \stdClass();
         // Get all the media
-        $medias = $this->response->Result->Property->Media;
+        $medias = $this->response->Media;
         // How many media items there are
-        $mediaCount = (int) $medias->attributes()['Count'];
+        $mediaCount = count($medias->MediaClasses);
         // If we have media items
         if ($mediaCount > 0) {
             // Loop through the types
-            foreach ($medias->MediaClass as $type) {
+            foreach ($medias->MediaClasses as $type) {
                 $return->types[] = (string) $type->Type;
                 // Loop through items
-                foreach ($type->MediaItems->MediaItem as $item) {
+                foreach ($type->MediaItems as $item) {
                     $return->{$type->Type}[] = $item;
                 }
             }
@@ -80,18 +75,18 @@ class Single extends AbstractSettings
         // New generic object
         $return = new \stdClass();
         // Get all the media
-        $narrative = $this->response->Result->Property->Narrative;
+        $narrative = $this->response->Narrative;
         // How many media items there are
-        $narrativeCount = (int) $narrative->attributes()['Count'];
+        $narrativeCount = count($narrative->Topics);
         // If we have media items
         if ($narrativeCount > 0) {
             // Loop through the types
-            foreach ($narrative->Topic as $topic) {
+            foreach ($narrative->Topics as $topic) {
                 // Make sure paragraphs is set
                 if (isset($topic->Paragraphs)) {
                     $return->types[] = (string) $topic->Name;
                     // Loop through items
-                    $return->{$topic->Name}[] = (array) $topic->Paragraphs;
+                    $return->{$topic->Name} = (array) $topic->Paragraphs;
                 }
             }
         }
