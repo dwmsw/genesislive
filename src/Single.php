@@ -83,10 +83,10 @@ class Single extends AbstractSettings
             // Loop through the types
             foreach ($narrative->Topics as $topic) {
                 // Make sure paragraphs is set
-                if (isset($topic->Paragraphs)) {
+                if (count($topic->Paragraphs) > 0) {
                     $return->types[] = (string) $topic->Name;
                     // Loop through items
-                    $return->{$topic->Name} = (array) $topic->Paragraphs;
+                    $return->{$topic->Name}[] = (array) $topic->Paragraphs;
                 }
             }
         }

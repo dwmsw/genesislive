@@ -92,12 +92,5 @@ class AbstractSettings
         $this->response = $this->http->send($this->request);
 
         $this->response = json_decode(utf8_encode($this->response->getBody()));
-        // // Grab OK attribute
-        // $OK = (string) $this->response->attributes()['OK'];
-
-        // // Make sure the request was OK
-        // if ($OK != 1) {
-        //     throw new \Exception("Error Making Request", 1);
-        // }
     }
 }
